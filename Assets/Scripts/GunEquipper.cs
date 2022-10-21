@@ -5,10 +5,15 @@ using UnityEngine;
 public class GunEquipper : MonoBehaviour
 {
     public static string activeWeaponType;
-   
+
+    [SerializeField]
+    GameUI gameUI;
+
     public GameObject pistol;
     public GameObject assaultRifle;
     public GameObject shotgun;
+
+    
     
     GameObject activeGun;
     // Start is called before the first frame update
@@ -40,16 +45,19 @@ public class GunEquipper : MonoBehaviour
         {
             loadWeapon(pistol);
             activeWeaponType = Constants.Pistol;
+            gameUI.updateReticle();
         }
         else if (Input.GetKeyDown("2"))
         {
             loadWeapon(assaultRifle);
             activeWeaponType = Constants.AssaultRifle;
+            gameUI.updateReticle();
         }
         else if (Input.GetKeyDown("3"))
         {
             loadWeapon(shotgun);
             activeWeaponType = Constants.Shotgun;
+            gameUI.updateReticle();
         }
     }
 }
